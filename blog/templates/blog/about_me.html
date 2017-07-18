@@ -1,0 +1,104 @@
+{% extends 'blog/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<html>
+
+	<head>
+		<title>About Me</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style>
+			#map {
+   				height: 400px;
+    			width: 50%;
+    			left: 20px;
+			}
+			#grad1 {
+				height: 100%;
+   				background: white; /* For browsers that do not support gradients */
+   				background: -webkit-linear-gradient(blue, white); /* For Safari 5.1 to 6.0 */
+   				background: -o-linear-gradient(blue, white); /* For Opera 11.1 to 12.0 */
+   				background: -moz-linear-gradient(blue, white); /* For Firefox 3.6 to 15 */
+   				background: linear-gradient(blue, white); /* Standard syntax (must be last) */		
+		</style>
+		<script>
+    		function myFunction() {
+       			var image = document.getElementById('marker');
+        		if (initMap ("NCSM")) {
+        			map = "GWCM";
+        			map.alt = "Girls Who Code Summer Imersion Program at Adobe in San Francisco.";
+        		}
+       			 else {
+        			map = "NCSM";
+        			map.alt = "Natomas Charter School Preforming and Fine Arts Academy";
+        		}
+      		}
+		</script>
+
+	</head>
+{% block content %}
+	<body>
+		<style>
+			.header2 {
+				text-align: center;
+				}
+			.content {
+				text-align: left;
+				left: 300px;
+				font-family: times;
+			}
+		</style>
+			<div class="header2">
+			<h1 style="font-family: courier new;">About Me</h1>
+			<hr>
+		</div>
+		<div class="container">
+  		<div class="row">
+    		<div class="col-sm-4">
+      			<img src="/" rel="flower-name" alt="unable to display image" width="369" height="304">
+    		</div>
+    		<div class="col-sm-4">
+      			<h3 style="font-family: times;">Magdalena Ramirez</h3>
+      			<p style="font-size:120%;" style="text-align:center;" style="color:rgb(90,90,90)";><b>Student</p></b>
+      			<p>Magirez00@gmail.com</p>
+    		</div>
+  		</div>
+  		</div>
+	</body>
+	<body>
+		<h3 style="font-family: times;"> My School</h3>
+    	<div id="map">
+    	<script>
+      		function initMap() {
+        		var NCSL = {lat: 38.657222, lng: -121.494149};
+        		var GWCL = {lat: 37.771098, lng: -122.401661};
+        		var NCSM = new google.maps.Map(document.getElementById("map"), {
+          			zoom: 20,
+          			center: NCSL
+        		});
+        		var GWCM = new google.maps.Map(document.getElementById("map"), {
+          			zoom: 20,
+          			center: GWCL
+        		});
+       
+            	var NCS = new google.maps.Marker({
+                	position: NCSL,
+                	map: map
+            	});
+            	var GWC = new google.maps.Marker({
+                	position: GWCL,
+                	map: map
+            	});
+      		}
+    	</script>
+    	<script async defer
+    		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzhvsJJaTFUayik-JBHXN2IefADy1341c&callback=initMap">
+    	</script>
+    	<button id="btn" onclick="myFunction()">Click me!</button>
+    	</div>
+	</body>
+</html>
+{% endblock %}
